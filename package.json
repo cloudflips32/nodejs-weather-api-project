@@ -10,9 +10,11 @@
   "author": "AJS",
   "license": "MIT",
   "dependencies": {
+    "apicache": "^1.6.3",
     "colors": "^1.4.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "express-rate-limit": "^6.0.1",
     "needle": "^3.0.0"
   },
   "devDependencies": {
