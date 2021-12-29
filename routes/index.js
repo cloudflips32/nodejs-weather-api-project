@@ -3,13 +3,17 @@ const express = require('express')
 const router = express.Router()
 const needle = require('needle')
 const colors = require('colors')
+const apicache = require('apicache')
 
 // Declare Environment Variables
 const API_BASE_URL = process.nextTick.API_BASE_URL
 const API_KEY_NAME = process.nextTick.API_KEY_NAME
 const API_KEY_VALUE = process.nextTick.API_KEY_VALUE
 
-router.get('/', async (req,res) => {
+// Initiate API Cache
+let cache = apicache.middleware
+
+router.get('/', cache('2 minutes'), async (req,res) => {
   try {
     const params = new URLSearchParams({
       [API_KEY_NAME]: API_KEY_VALUE,

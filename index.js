@@ -12,6 +12,8 @@ const limiter = rateLimit({
   windowMs: 10*60*1000,
   max: 5
 })
+app.use(limiter)
+app.set('trust proxy', 1)
 
 // To Routes
 app.use('/api', require('./routes'))
