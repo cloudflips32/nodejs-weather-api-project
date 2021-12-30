@@ -6,9 +6,9 @@ const colors = require('colors')
 const apicache = require('apicache')
 
 // Declare Environment Variables
-const API_BASE_URL = process.nextTick.API_BASE_URL
-const API_KEY_NAME = process.nextTick.API_KEY_NAME
-const API_KEY_VALUE = process.nextTick.API_KEY_VALUE
+const API_BASE_URL = process.env.API_BASE_URL
+const API_KEY_NAME = process.env.API_KEY_NAME
+const API_KEY_VALUE = process.env.API_KEY_VALUE
 
 // Initiate API Cache
 let cache = apicache.middleware
@@ -28,9 +28,9 @@ router.get('/', cache('2 minutes'), async (req,res) => {
       console.log(`REQUEST: ${API_BASE_URL}?${params}`)
     }
 
-    res.status(200).json(data).blue
+    res.status(200).json(data).green
   } catch (error) {
-    res.status(500).json({ error }).red
+    next(error)
   }
 })
 
