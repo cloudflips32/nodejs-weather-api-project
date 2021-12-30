@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const rateLimit = require('express-rate-limit')
+const rateLimit = require('express-rate-limit').default
 require('dotenv').config()
 const errorHandler = require('./middleware/error')
 
